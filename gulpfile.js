@@ -80,12 +80,7 @@ gulp.task('libs',  () =>{
 gulp.task('css',  () =>{
   return gulp.src(routes.src + routes.stylus + 'main.styl')
   .pipe(header(banner, { pkg : pkg } ))
-  .pipe(plumber( {
-          errorHandler: function(err){
-            console.log(err);
-            this.emit('end');
-          }
-  }))
+  .pipe(plumber())
   .pipe(sourcemaps.init()) //cargamos tarea de sourcemaps
   .pipe(stylus({ //iniciamos stylus
     use: nib(), // cargamos nib para uso de css3
