@@ -82,7 +82,7 @@ gulp.task('css',  () =>{
   .pipe(header(banner, { pkg : pkg } ))
   .pipe(plumber( {
           errorHandler: function(err){
-            this.emit('end');
+            console.log('se daño')
           }
   }))
   .pipe(sourcemaps.init()) //cargamos tarea de sourcemaps
