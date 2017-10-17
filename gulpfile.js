@@ -78,7 +78,7 @@ gulp.task('libs',  () =>{
 
 const onError = (err) =>{
   console.log(err);
-}
+};
 
 //tarea para compilar stylus
 gulp.task('css',  () =>{
@@ -86,7 +86,7 @@ gulp.task('css',  () =>{
   .pipe(header(banner, { pkg : pkg } ))
   .pipe(plumber( {
           errorHandler: onError
-  })
+  }))
   .pipe(sourcemaps.init()) //cargamos tarea de sourcemaps
   .pipe(stylus({ //iniciamos stylus
     use: nib(), // cargamos nib para uso de css3
