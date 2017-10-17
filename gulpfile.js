@@ -76,11 +76,17 @@ gulp.task('libs',  () =>{
         .pipe(gulp.dest(routes.app + routes.js));
 });
 
+const onError = (err) =>{
+  console.log(err);
+}
+
 //tarea para compilar stylus
 gulp.task('css',  () =>{
   return gulp.src(routes.src + routes.stylus + 'main.styl')
   .pipe(header(banner, { pkg : pkg } ))
-  .pipe(plumber())
+  .pipe(plumber( {
+          errorHandler: onError
+  })
   .pipe(sourcemaps.init()) //cargamos tarea de sourcemaps
   .pipe(stylus({ //iniciamos stylus
     use: nib(), // cargamos nib para uso de css3
