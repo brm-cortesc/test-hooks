@@ -81,7 +81,7 @@ gulp.task('css',  () =>{
   return gulp.src(routes.src + routes.stylus + 'main.styl')
   .pipe(header(banner, { pkg : pkg } ))
   .pipe(plumber( {
-          errorHandler: (err) =>{
+          errorHandler: function(err){
             console.log(err);
             this.emit('end');
           }
