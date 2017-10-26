@@ -118,13 +118,16 @@ gulp.task('csslint', () =>{
         // .pipe(stylint.reporter())
 
       .pipe(stylint.reporter())
-      .pipe(stylint.reporter({
-        logger: function () {
-         if('Warning'){
-          console.log('hola ')
-         }
+      // .pipe(stylint.reporter({
+      //   logger: function () {
+      //   //  console.log(logger())
+      //   //  if('Warning'){
+      //   //   console.log('holis')
+      //   // }else{
+      //   //   console.log('adio')
+      //   // }
 
-      } }))
+      // } }))
 
 });
 
