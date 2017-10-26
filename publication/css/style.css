@@ -4,7 +4,7 @@
  * @link 
  * @link Cristian Cortés - cristian.cortes@brm.com.co
  * @license 
- *Tue Oct 17 2017 15:46:15 GMT-0500 (COT)
+ *Wed Oct 25 2017 19:14:54 GMT-0500 (COT)
  */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -6882,8 +6882,8 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Varela Round', sans-serif;
   color: #c26907;
+  font-family: 'Varela round', sans-serif;
 }
 .row {
   margin-left: -15px;
@@ -6900,6 +6900,11 @@ h3 {
 }
 .row:after {
   clear: both;
+}
+.testHola {
+  bacground-color: #fff;
+  display: block;
+  position: absolute;
 }
 .container-fluid:before,
 .container-fluid:after {
