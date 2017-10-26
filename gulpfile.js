@@ -120,7 +120,7 @@ gulp.task('csslint', () =>{
       .pipe(stylint.reporter())
       // .pipe(stylint.reporter({
       //   logger: function () {
-      //     process.exit(1)
+      //     if('fail') process.exit(1)
 
       // } }))
 
