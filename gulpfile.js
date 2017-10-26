@@ -118,11 +118,13 @@ gulp.task('csslint', () =>{
         // .pipe(stylint.reporter())
 
       .pipe(stylint.reporter())
-      // .pipe(stylint.reporter({
-      //   logger: function () {
-      //     if('fail') process.exit(1)
+      .pipe(stylint.reporter({
+        logger: function () {
+         if('Warning'){
+          console.log('hola ')
+         }
 
-      // } }))
+      } }))
 
 });
 
