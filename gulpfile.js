@@ -106,19 +106,23 @@ gulp.task('csslint', () =>{
             'namingConvention': 'lowercase-dash',
             'leadingZero': false,
             'commentSpace': false,
-            'valid':true,
+            'valid':{
+              'expect':true,
+              'error':true
+            },
             'groupOutputByFile': true,
-            'namingConventionStrict': true
+            'namingConventionStrict': true,
+            "prefixVarsWithDollar": 'always'
           }
 
         }))
         //.pipe(plumber())
-        // .pipe(stylint.reporter({
-        //   verbose: true
-        //  }))
+        .pipe(stylint.reporter({
+          verbose: true
+         }))
         // .pipe(stylint.reporter())
 
-      .pipe(stylint.reporter())
+      // .pipe(stylint.reporter())
       // .pipe(stylint.reporter({
       //   logger: function () {
       //   //  console.log(logger())
