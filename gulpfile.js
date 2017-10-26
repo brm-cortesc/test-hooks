@@ -112,6 +112,7 @@ gulp.task('csslint', () =>{
           }
 
         }))
+        .pipe(plumber())
         // .pipe(stylint.reporter({
         //   verbose: true
         //  }))
