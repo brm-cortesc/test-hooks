@@ -4,7 +4,7 @@
  * @link 
  * @link Cristian Cortés - cristian.cortes@brm.com.co
  * @license 
- *Wed Oct 25 2017 19:40:25 GMT-0500 (COT)
+ *Fri Oct 27 2017 09:24:52 GMT-0500 (COT)
  */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -6901,8 +6901,8 @@ h3 {
 .row:after {
   clear: both;
 }
-.testHola {
-  bacground-color: #fff;
+.test-jola {
+  background-color: #fff;
   display: block;
   position: absolute;
 }

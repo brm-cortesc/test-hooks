@@ -80,7 +80,7 @@ gulp.task('libs',  () =>{
 gulp.task('css',  () =>{
   return gulp.src(routes.src + routes.stylus + 'main.styl')
   .pipe(header(banner, { pkg : pkg } ))
-  .pipe(plumber.stop())
+  .pipe(plumber())
   .pipe(sourcemaps.init()) //cargamos tarea de sourcemaps
   .pipe(stylus({ //iniciamos stylus
     use: nib(), // cargamos nib para uso de css3
@@ -103,7 +103,10 @@ gulp.task('csslint', () =>{
         .pipe(stylint({
           rules:{
             'sortOrder': 'alphabetical',
-            'namingConvention': 'lowercase-dash',
+            'namingConvention': {
+                'expect': 'lowercase-dash',
+                'error': true
+            },
             'leadingZero': false,
             'commentSpace': false,
             'valid':{
@@ -112,7 +115,8 @@ gulp.task('csslint', () =>{
             },
             'groupOutputByFile': true,
             'namingConventionStrict': true,
-            "prefixVarsWithDollar": 'always'
+            'prefixVarsWithDollar': 'always'
+
           }
 
         }))
@@ -120,19 +124,6 @@ gulp.task('csslint', () =>{
         .pipe(stylint.reporter({
           verbose: true
          }))
-        // .pipe(stylint.reporter())
-
-      // .pipe(stylint.reporter())
-      // .pipe(stylint.reporter({
-      //   logger: function () {
-      //   //  console.log(logger())
-      //   //  if('Warning'){
-      //   //   console.log('holis')
-      //   // }else{
-      //   //   console.log('adio')
-      //   // }
-
-      // } }))
 
 });
 
