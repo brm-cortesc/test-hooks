@@ -62,7 +62,7 @@ done
 for x in $oli
 
 do
-	echo 'entre al erro ' $oli
+	echo $oli
     if echo "$x" | grep -q "$ERRU"; then
 
     	echo $x
