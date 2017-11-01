@@ -1,7 +1,11 @@
-# #!/bin/sh
-# echo 'corriendo tests'
+#!/bin/bash
+#
+
 
 PATH=$PATH:/usr/local/bin:/usr/local/sbin
+COL_ERR="\033[31;1;1m"
+COL_WARN="\033[33;1;1m"
+COL_LOG="\033[34;1;1m"
 
 # # # git stash -q --keep-index
 # echo 'Validando que stylus se compilen correctamente'
@@ -16,17 +20,17 @@ PATH=$PATH:/usr/local/bin:/usr/local/sbin
 # # # Si la tarea de gulp bota error se termina la tarea y no se ejecuta el commit
 # [ $RESULT1 -ne 0 ] && echo 'no se pudo hacer commit, stylus presenta errores' && exit 1
 
-echo '::----------------------::'
-echo '::----------------------::'
-echo '::----------------------::'
-echo 'Validando arquitectura CSS'
-echo '::----------------------::'
-echo '::----------------------::'
-echo '::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'Validando arquitectura CSS'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
 
 # funcion para ejecutar tarea de revision de arquitectura
 function callLint(){
-	gulp csslint
+    gulp csslint
 }
 
 
@@ -44,15 +48,16 @@ ERRU="Error:"
 WARN="Warning:"
 
 
+
 # contamos alertas
 for w in $oli
 
 do
     if echo "$w" | grep -q "$WARN"; then
 
-    	echo $w
-    	
-    	let LISTW=${LISTW}+1	
+        echo $w
+        
+        let LISTW=${LISTW}+1    
     fi
 
 
@@ -62,12 +67,12 @@ done
 for x in $oli
 
 do
-	echo $oli
+    echo $oli
     if echo "$x" | grep -q "$ERRU"; then
 
-    	echo $x
-    	
-    	let LISTE=${LISTE}+1	
+        echo $x
+        
+        let LISTE=${LISTE}+1    
     fi
 
 
@@ -77,25 +82,25 @@ done
 # Valida que existan alerts para no dejar hacer commit
 
 if [ $LISTW -gt 0 ]; then 
-	echo 'no se pudo hacer commit, hay alertas en el css' && exit 1
+    echo -e "\a" $COL_WARN'no se pudo hacer commit, hay alertas en el css' && exit 1
 
 fi
 
 # Valida que existan errores para no dejar hacer commit
 if [ $LISTE -gt 0 ]; then 
-	echo 'no se pudo hacer commit, hay errores en el css' && exit 1
+    echo -e "\a" $COL_ERR'no se pudo hacer commit, hay errores en el css' && exit 1
 
 
 fi
 
 
-echo '::----------------------::'
-echo '::----------------------::'
-echo '::----------------------::'
-echo ':Validando assets finales:'
-echo '::----------------------::'
-echo '::----------------------::'
-echo '::----------------------::'
+# echo '::----------------------::'
+# echo '::----------------------::'
+# echo '::----------------------::'
+# echo ':Validando assets finales:'
+# echo '::----------------------::'
+# echo '::----------------------::'
+# echo '::----------------------::'
 
 
 # indexApp=cat publication/index.html
@@ -119,13 +124,13 @@ echo '::----------------------::'
 
 
 
-# echo '::----------------------::'
-# echo '::----------------------::'
-# echo '::----------------------::'
-# echo '::---------Done---------::'
-# echo '::----------------------::'
-# echo '::----------------------::'
-# echo '::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::---------Done---------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
+echo -e $COL_LOG'::----------------------::'
 
 
 # Se ejecuta el commit si todo esta orden
